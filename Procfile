@@ -1,0 +1,1 @@
+"web": "echo $KEY > /dist && echo $CERT > /dist && npm run start"
