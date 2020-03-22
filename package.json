@@ -1,0 +1,29 @@
+{
+  "name": "node-typescript-starter",
+  "version": "3.0.0",
+  "description": "",
+  "scripts": {
+    "tsc:watch": "tsc -w",
+    "tsc:build": "tsc",
+    "postbuild": "copyfiles -f src/**/*.html src/**/*.css dist/",
+    "serve": "nodemon --inspect --watch dist/ -d 1 ./dist/main.js",
+    "test": "mocha dist/test"
+  },
+  "author": "marcin.baraniecki@softwaremill.com",
+  "license": "ISC",
+  "dependencies": {
+    "afip-apis": "^0.3.4",
+    "express": "^4.17.1",
+    "json2csv": "^5.0.0",
+    "moment": "^2.24.0",
+    "node-cache": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/node": "^10.17.17",
+    "chai": "~3.5.0",
+    "copyfiles": "^2.2.0",
+    "nodemon": "~1.17.5",
+    "typescript": "^3.7.3"
+  }
+}

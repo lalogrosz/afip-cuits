@@ -1,0 +1,23 @@
+
+<html>
+    <head>
+        <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function buscar(){
+                $.post('cuit',{'listado', $('#listado').val()}, function(response){
+                    $('#resultado').html(response);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <form method="post" action="/cuits">
+        <h1>CUITS</h1>
+        <div style="width: 50%;text-align: center; float:left">
+            <textarea name="listado" style="width: 100%; height: 500px"></textarea>
+            <button type="submit" style="font-size: 20px; margin-top:20px;" >Buscar</button>
+        </div>
+        <div>
+        </form>
+    </body>
+    </html>

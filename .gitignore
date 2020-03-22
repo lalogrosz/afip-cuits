@@ -1,0 +1,6 @@
+dist
+node_modules
+certificate.crt
+certificate-prod.crt
+certificate.key
+certificate.csr
