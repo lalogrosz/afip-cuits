@@ -4,8 +4,9 @@
   "description": "",
   "scripts": {
     "tsc:watch": "tsc -w",
-    "tsc:build": "tsc",
-    "postbuild": "copyfiles -f src/**/*.html src/**/*.css dist/",
+    "build": "tsc",
+    "heroku-postbuild": "copyfiles -f src/**/*.html src/**/*.css dist/ && copyfiles -f src/cache/* dist/cache",
+    "start": "node dist/main.js",
     "serve": "nodemon --inspect --watch dist/ -d 1 ./dist/main.js",
     "test": "mocha dist/test"
   },

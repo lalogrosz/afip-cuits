@@ -15,8 +15,8 @@ router.get('/',(req,res) => {
 
 router.post('/cuits',function(req,res){
 
-  const DEFAULT_CERTIFICATE: string = "../certificate-prod.crt";
-  const DEFAULT_CERTIFICATE_KEY: string = "../certificate.key";
+  const DEFAULT_CERTIFICATE: string = "./certificate-prod.crt";
+  const DEFAULT_CERTIFICATE_KEY: string = "./certificate.key";
   const DEFAULT_URLWSAAWSDL: string = "https://wsaa.afip.gov.ar/ws/services/LoginCms?WSDL";
 
   const cacheLogin = CacheLogin.Instance; 
