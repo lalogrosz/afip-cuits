@@ -7,7 +7,7 @@
     "postinstall": "npm run build",
     "build": "tsc",
     "heroku-postbuild": "copyfiles -f src/**/*.html src/**/*.css dist/ && copyfiles -f src/cache/* dist/cache",
-    "start": "echo $KEY > ./dist/certificate.key && echo $CERT > ./dist/cartificate-prod.crt && node dist/main.js",
+    "start": "echo $KEY > dist/certificate.key && echo $CERT > dist/cartificate-prod.crt && cd dist && node main.js",
     "serve": "nodemon --inspect --watch dist/ -d 1 ./dist/main.js",
     "test": "mocha dist/test"
   },
