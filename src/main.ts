@@ -85,7 +85,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 //add the router
 app.use('/', router);
-app.listen(process.env.port || 3000);
+app.listen(process.env.port || 80);
 
 /*console.log('Running at Port 3000');
 
