@@ -1,1 +1,1 @@
-web: npm run start
+web: echo $KEY > dist/certificate.key && echo $CERT > dist/certificate-prod.crt && npm run start
