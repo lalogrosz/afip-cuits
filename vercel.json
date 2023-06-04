@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "afip-cuits",
+  "builds": [{ "src": "main.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/main.js" }]
+}
