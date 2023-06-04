@@ -1,4 +1,5 @@
 dist
+public
 node_modules
 certificate.crt
 certificate-prod.crt
