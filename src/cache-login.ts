@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as moment from "moment";
 import * as path from "path";
-import { ILoginTicketResponse, LoginTicket } from 'afip-apis';
+import { ILoginTicketResponse, LoginTicket } from "afip-apis";
 
 const DEFAULT_CERTIFICATE: string = "./private/certificate/certificate.crt";
 const DEFAULT_CERTIFICATE_KEY: string = "./private/certificate/private.key";
@@ -58,11 +58,12 @@ export class CacheLogin {
     fs.mkdirSync(_pathToCheck);
   }
   private login(serviceId: string): Promise<ILoginTicketResponse> {
-    return this.loginTicket.wsaaLogin(serviceId, this._wsaawsdl, this._certificatePath, this._certificateKey)
-      .then(ticket => {
+    return this.loginTicket
+      .wsaaLogin(serviceId, this._wsaawsdl, this._certificatePath, this._certificateKey)
+      .then((ticket) => {
         try {
           this.checkFolder(TICKET_PATH);
-          fs.writeFileSync(`${TICKET_PATH}${serviceId}-ticket.json`, JSON.stringify(ticket));
+          fs.writeFileSync(`${path.dirname(TICKET_PATH)}${serviceId}-ticket.json`, JSON.stringify(ticket));
         } catch (err) {
           return Promise.reject(err);
         }
@@ -88,20 +89,16 @@ export class CacheLogin {
         try {
           const s = fs.readFileSync(`${TICKET_PATH}${serviceId}-ticket.json`, "utf8");
           ticket = JSON.parse(s);
-        } catch (err) {
-        }
+        } catch (err) {}
       }
       if (ticket && moment(ticket.header.expirationTime).isSameOrAfter(moment())) {
         return resolve(ticket);
       }
       // Genero
       return this.login(serviceId)
-        .then(ticket => resolve(ticket))
-        .catch(err => reject(err));
+        .then((ticket) => resolve(ticket))
+        .catch((err) => reject(err));
     });
     return promise;
-  }
+  };
 }
-
-
-

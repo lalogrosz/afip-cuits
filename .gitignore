@@ -4,3 +4,4 @@ certificate.crt
 certificate-prod.crt
 certificate.key
 certificate.csr
+.ws_sr_padron_a13-ticket.json
