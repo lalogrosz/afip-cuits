@@ -7,9 +7,9 @@
     "postinstall": "npm run build",
     "build": "tsc && npm run postbuild",
     "postbuild": "copyfiles -f src/**/*.html src/**/*.css public/ && copyfiles -f src/cache/* public/cache && echo \"$KEY\" > public/certificate.key && echo \"$CERT\" > public/certificate-prod.crt",
-    "start": "cd dist && node index.js",
-    "serve": "nodemon --inspect --watch dist/ -d 1 ./dist/index.js",
-    "test": "mocha dist/test"
+    "start": "cd public && node index.js",
+    "serve": "nodemon --inspect --watch dist/ -d 1 ./public/index.js",
+    "test": "mocha public/test"
   },
   "author": "marcin.baraniecki@softwaremill.com",
   "license": "ISC",
