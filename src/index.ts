@@ -53,9 +53,9 @@ router.get("/cuit/:cuit", function (req, res) {
   cacheLogin
     .getTicket(PersonaServiceA13.serviceId)
     .then(async (ticket: ILoginTicketResponse) => {
-      const { provincia, actividad } = await getPersona(ticket, req.params.cuit);
-      if (provincia) {
-        res.send({ provincia, actividad });
+      const datos = await getPersona(ticket, req.params.cuit);
+      if (datos) {
+        res.send({ provincia: datos.provincia, actividad: datos.actividad });
       } else {
         res.send({ provincia: "No existe", actividad: "No existe" });
       }
@@ -75,9 +75,9 @@ router.post("/cuits", function (req, res) {
       for (let i = 0; i < cuits.length; i++) {
         const cuit = cuits[i].trim();
         if (cuit !== "") {
-          const { provincia, actividad } = await getPersona(ticket, cuit);
-          if (provincia) {
-            csvResponse.push([cuit, provincia, actividad]);
+          const datos = await getPersona(ticket, cuit);
+          if (datos) {
+            csvResponse.push([cuit, datos.provincia, datos.actividad]);
           } else {
             csvResponse.push([cuit, "No existe", "No existe"]);
           }
