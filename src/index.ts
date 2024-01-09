@@ -10,12 +10,17 @@ const app = express();
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.join(__dirname + "/form.html"));
 });
 
-const DEFAULT_CERTIFICATE: string = path.join(__dirname + "/certificate-prod.crt");
-const DEFAULT_CERTIFICATE_KEY: string = path.join(__dirname + "/certificate.key");
-const DEFAULT_URLWSAAWSDL: string = "https://wsaa.afip.gov.ar/ws/services/LoginCms?WSDL";
+const DEFAULT_CERTIFICATE: string = path.join(
+  __dirname + "/certificate-prod.crt"
+);
+const DEFAULT_CERTIFICATE_KEY: string = path.join(
+  __dirname + "/certificate.key"
+);
+const DEFAULT_URLWSAAWSDL: string =
+  "https://wsaa.afip.gov.ar/ws/services/LoginCms?WSDL";
 
 const cacheLogin = CacheLogin.Instance;
 const cuitRepresentada = 20302760935;
@@ -112,6 +117,8 @@ app.use(express.urlencoded());
 //add the router
 app.use("/", router);
 app.listen(process.env.PORT || 3000);
+
+module.exports = app;
 
 /*console.log('Running at Port 3000');
 
