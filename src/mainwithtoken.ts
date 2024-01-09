@@ -29,12 +29,14 @@ const cache = new CacheService(ttl); // Create a new cache service instance
     const a13 = new PersonaServiceA13(PersonaServiceA13.testWSDL);
     return a13.dummy({})
       .then(r => {
-        return a13.getPersona({
+        return a13
+          .getPersona({
             token: token,
             sign: sign,
-            cuitRepresentada,
-            idPersona: documento
-          }).catch(err => console.error(err)) ;
+            cuitRepresentada: cuitRepresentada as any,
+            idPersona: documento as any,
+          })
+          .catch((err) => console.error(err));
       })
       .then((id: any) => {
         console.log(`===getIdPersonaListByDocumento===\n${JSON.stringify(id)}`);        

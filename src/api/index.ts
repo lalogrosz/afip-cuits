@@ -43,8 +43,8 @@ router.post("/cuits", function (req, res) {
             const result: IgetPersonaOutput = await a13.getPersona({
               token: ticket.credentials.token,
               sign: ticket.credentials.sign,
-              cuitRepresentada,
-              idPersona: cuitNumber
+              cuitRepresentada: cuitRepresentada as any,
+              idPersona: cuitNumber as any,
             });
 
             const persona = result.personaReturn.persona;
